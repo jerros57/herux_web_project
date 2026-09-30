@@ -5,6 +5,11 @@
  * - Feedback Visual
  * - Manejo Asíncrono de FormSubmit (Requisito estricto)
  */
+document.addEventListener('DOMContentLoaded', () => {
+  iniciarNavegacionMovil();
+  configurarFormularioContacto();
+  iniciarModoOscuro();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   iniciarNavegacionMovil();
@@ -115,6 +120,39 @@ function configurarFormularioContacto() {
     if (feedbackBox && feedbackBox.textContent !== '') {
       feedbackBox.textContent = '';
       feedbackBox.className = 'form-feedback';
+    }
+  });
+}
+
+// Manejo de Modo Oscuro con persistencia en LocalStorage
+function iniciarModoOscuro() {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+
+  const icon = themeToggle.querySelector('i');
+  const savedTheme = localStorage.getItem('herux-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Comprobar preferencia guardada o del sistema operativo
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.body.setAttribute('data-theme', 'dark');
+    if (icon) icon.className = 'fa-solid fa-sun';
+  } else {
+    document.body.removeAttribute('data-theme');
+    if (icon) icon.className = 'fa-solid fa-moon';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+
+    if (isDark) {
+      document.body.removeAttribute('data-theme');
+      localStorage.setItem('herux-theme', 'light');
+      if (icon) icon.className = 'fa-solid fa-moon';
+    } else {
+      document.body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('herux-theme', 'dark');
+      if (icon) icon.className = 'fa-solid fa-sun';
     }
   });
 }

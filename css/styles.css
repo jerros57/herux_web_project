@@ -965,3 +965,80 @@ ul {
     justify-content: center;
   }
 }
+
+/* Botón selector de tema */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: var(--transition);
+  margin-right: 0.5rem;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-primary-light);
+  transform: rotate(15deg);
+}
+
+/* ==========================================================================
+   Variables y ajustes para MODO OSCURO
+   ========================================================================== */
+body[data-theme="dark"] {
+  --color-bg-page: #120b14;
+  --color-bg-alt: #1a101d;
+  --color-card-bg: #1f1423;
+  --color-border: #322138;
+  --color-text-main: #f5edf4;
+  --color-text-muted: #c4b5c3;
+  --color-primary-light: #2d1329;
+  --color-primary-tint: #231221;
+}
+
+body[data-theme="dark"] .navbar {
+  background-color: rgba(18, 11, 20, 0.92);
+  border-bottom-color: var(--color-border);
+}
+
+body[data-theme="dark"] .hero-section {
+  background: linear-gradient(180deg, #120b14 0%, #1a101d 100%);
+}
+
+body[data-theme="dark"] .hero-logo-box,
+body[data-theme="dark"] .hero-badge-float,
+body[data-theme="dark"] .split-card,
+body[data-theme="dark"] .founder-card,
+body[data-theme="dark"] .contact-info-card,
+body[data-theme="dark"] .contact-form-card {
+  background-color: var(--color-card-bg);
+}
+
+body[data-theme="dark"] .founder-name,
+body[data-theme="dark"] .hero-title {
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .input-with-icon input,
+body[data-theme="dark"] .input-with-icon textarea {
+  background-color: #170d19;
+  color: #f5edf4;
+  border-color: var(--color-border);
+}
+
+body[data-theme="dark"] .theme-toggle {
+  color: #f39c12;
+  border-color: var(--color-border);
+}
+
+@media (max-width: 768px) {
+  body[data-theme="dark"] .nav-menu {
+    background: #190f1d;
+  }
+}
