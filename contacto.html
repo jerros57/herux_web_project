@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto & Redes Sociales - herUX</title>
+  <meta name="description" content="Ponte en contacto con la comunidad herUX o síguenos en nuestras redes sociales oficiales." />
+
+  <!-- Tipografía: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Mismo archivo CSS compartido -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="herUX Inicio">
+        <img src="img/logo-herux.png" alt="Logo herUX" class="logo-img" />
+        <span class="logo-text">her<span>UX</span></span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="index.html#quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+          <li><a href="index.html#pilares" class="nav-link">Misión & Propósito</a></li>
+          <li><a href="index.html#cultura" class="nav-link">Cultura & Beneficios</a></li>
+          <li><a href="index.html#fundadora" class="nav-link">Fundadora</a></li>
+          <li><a href="contacto.html" class="nav-btn-link active-btn">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- CABECERA DE CONTACTO -->
+    <section class="contact-hero">
+      <div class="container text-center">
+        <span class="badge-pill">Hablemos</span>
+        <h1 class="page-title">Contacto & Canales Oficiales</h1>
+        <p class="page-subtitle">
+          Únete a nuestra comunidad, interactúa en nuestras redes o déjanos un mensaje para coordinar colaboraciones, talleres y propuestas.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PRINCIPAL: REDES Y FORMULARIO -->
+    <section class="section section-contact-body">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <!-- COLUMNA IZQUIERDA: ENLACES DIRECTOS A RRSS -->
+          <div class="contact-info-card">
+            <h3>Nuestras Redes Oficiales</h3>
+            <p>Sigue nuestras actividades, transmisiones y novedades en cada una de nuestras plataformas:</p>
+
+            <div class="social-links-list">
+              <!-- Instagram -->
+              <a href="https://instagram.com/her.uxec" target="_blank" rel="noopener noreferrer" class="social-item">
+                <div class="social-icon instagram"><i class="fa-brands fa-instagram"></i></div>
+                <div class="social-text">
+                  <strong>Instagram</strong>
+                  <span>@her.uxec</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/company/her-ux/mycompany/" target="_blank" rel="noopener noreferrer" class="social-item">
+                <div class="social-icon linkedin"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="social-text">
+                  <strong>LinkedIn</strong>
+                  <span>her UX</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
+              </a>
+
+              <!-- YouTube -->
+              <a href="https://www.youtube.com/channel/UCL-WU2sxF2A1HmQ7NM1l0gA" target="_blank" rel="noopener noreferrer" class="social-item">
+                <div class="social-icon youtube"><i class="fa-brands fa-youtube"></i></div>
+                <div class="social-text">
+                  <strong>YouTube</strong>
+                  <span>herUX Canal Oficial</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
+              </a>
+
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/her.uxec" target="_blank" rel="noopener noreferrer" class="social-item">
+                <div class="social-icon facebook"><i class="fa-brands fa-facebook-f"></i></div>
+                <div class="social-text">
+                  <strong>Facebook</strong>
+                  <span>her.uxec</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
+              </a>
+            </div>
+
+            <div class="direct-email-box">
+              <i class="fa-regular fa-envelope"></i>
+              <div>
+                <small>Correo de la comunidad</small>
+                <p>dependecia37@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: FORMULARIO FORMSUBMIT -->
+          <div class="contact-form-card">
+            <h3>Envíanos un Mensaje</h3>
+            <p>Escríbenos directamente y te responderemos a la brevedad.</p>
+
+            <!-- Contenedor reactivo de feedback -->
+            <div id="form-feedback" class="form-feedback" role="alert"></div>
+
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="nombre">Nombre completo <span class="required">*</span></label>
+                <div class="input-with-icon">
+                  <i class="fa-regular fa-user"></i>
+                  <input type="text" id="nombre" name="nombre" placeholder="Ej. Sofía Morales" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="correo">Correo electrónico <span class="required">*</span></label>
+                <div class="input-with-icon">
+                  <i class="fa-regular fa-envelope"></i>
+                  <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Mensaje <span class="required">*</span></label>
+                <div class="input-with-icon textarea-icon">
+                  <i class="fa-regular fa-comment-dots"></i>
+                  <textarea id="mensaje" name="mensaje" rows="5" placeholder="¿En qué te gustaría colaborar o consultar?" required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" id="btn-submit" class="btn btn-primary btn-full">
+                <span>Enviar mensaje</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer con Redes Sociales Oficiales -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="img/logo-herux-white.png" alt="herUX" class="footer-logo-img" onerror="this.src='img/logo-herux.png'" />
+          <span class="logo-text-footer">her<span>UX</span></span>
+        </div>
+        <p>Empoderando a las mujeres en la Experiencia de Usuario.</p>
+      </div>
+
+      <div class="footer-social">
+        <h4>Conéctate con nosotros</h4>
+        <div class="social-icons-footer">
+          <a href="https://instagram.com/her.uxec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/her-ux/mycompany/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/channel/UCL-WU2sxF2A1HmQ7NM1l0gA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://www.facebook.com/her.uxec" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 herUX Comunidad. Fundada por Olga Tohabanda Duchi.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

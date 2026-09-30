@@ -1,13 +1,6 @@
 /* ==========================================================================
-   herUX - Hoja de Estilos Principal (Mobile-First & Responsiva)
-   Paleta de Colores de Identidad:
-   - Primario: #8C247B (Púrpura herUX)
-   - Primario Oscuro: #5C1551
-   - Primario Claro / Acento: #B83DA5
-   - Fondo sutil: #FBF7FA
-   - Bordes / Separadores: #F0DEED
-   - Texto principal: #221526
-   - Texto suave: #695669
+   herUX - Hoja de Estilos Compartida (Mobile-First & Responsiva)
+   Identidad cromática: Púrpura #8C247B / Fondos suaves #FCF9FB
    ========================================================================== */
 
 :root {
@@ -40,7 +33,6 @@
   --radius-full: 9999px;
 }
 
-/* Reset Básico */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -60,7 +52,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Tipografía y Contenedores */
 .container {
   width: 90%;
   max-width: 1140px;
@@ -119,6 +110,11 @@ ul {
   background-color: var(--color-primary-tint);
 }
 
+.btn-large {
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+}
+
 .btn-full {
   width: 100%;
 }
@@ -163,9 +159,11 @@ ul {
   gap: 0.75rem;
 }
 
-.logo-svg {
+.logo-img {
   width: 38px;
   height: 38px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .logo-text {
@@ -202,15 +200,16 @@ ul {
 
 .nav-btn-link {
   background-color: var(--color-primary);
-  color: #FFF;
-  padding: 0.5rem 1.2rem;
+  color: #FFF !important;
+  padding: 0.5rem 1.3rem;
   border-radius: var(--radius-full);
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.nav-btn-link:hover {
+.nav-btn-link:hover, .nav-btn-link.active-btn {
   background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 12px rgba(140, 36, 123, 0.25);
 }
 
 .nav-toggle {
@@ -230,7 +229,7 @@ ul {
   transition: var(--transition);
 }
 
-/* HERO */
+/* HERO INDEX */
 .hero-section {
   position: relative;
   overflow: hidden;
@@ -291,9 +290,9 @@ ul {
   align-items: center;
 }
 
-.hero-art-box {
-  width: 260px;
-  height: 260px;
+.hero-logo-box {
+  width: 240px;
+  height: 240px;
   background: #FFF;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -301,11 +300,13 @@ ul {
   justify-content: center;
   align-items: center;
   border: 2px solid var(--color-border);
+  padding: 1.5rem;
 }
 
-.hero-big-svg {
-  width: 140px;
-  height: 140px;
+.hero-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .hero-badge-float {
@@ -326,12 +327,12 @@ ul {
 
 .badge-1 {
   top: 10px;
-  left: 10px;
+  left: 0;
 }
 
 .badge-2 {
   bottom: 15px;
-  right: 15px;
+  right: 0;
   animation-delay: 2s;
 }
 
@@ -340,7 +341,7 @@ ul {
   100% { transform: translateY(-8px); }
 }
 
-/* SECCIONES COMUNES */
+/* SECCIONES */
 .section {
   padding: 5rem 0;
 }
@@ -418,7 +419,7 @@ ul {
   line-height: 1.65;
 }
 
-/* CULTURA, BENEFICIOS, PROYECTOS */
+/* CULTURA, BENEFICIOS Y PROYECTOS */
 .section-features {
   background-color: var(--color-bg-alt);
 }
@@ -480,15 +481,15 @@ ul {
   padding: 3rem;
   box-shadow: var(--shadow-md);
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 260px 1fr;
   align-items: center;
   gap: 3.5rem;
 }
 
 .founder-avatar-wrapper {
   position: relative;
-  width: 230px;
-  height: 230px;
+  width: 220px;
+  height: 220px;
   margin: 0 auto;
 }
 
@@ -554,14 +555,68 @@ ul {
   border-radius: var(--radius-full);
 }
 
-/* CONTACTO */
-.section-contact {
-  background: linear-gradient(180deg, var(--color-bg-alt) 0%, #FFFFFF 100%);
+/* CTA BANNER EN INDEX */
+.section-cta {
+  background-color: var(--color-bg-alt);
+}
+
+.cta-box {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: #FFF;
+  padding: 4rem 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-box h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.cta-box p {
+  color: #F6ECF5;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.cta-box .btn-primary {
+  background-color: #FFF;
+  color: var(--color-primary-dark);
+}
+
+.cta-box .btn-primary:hover {
+  background-color: var(--color-primary-tint);
+}
+
+/* PÁGINA CONTACTO ESPECÍFICA */
+.contact-hero {
+  padding: 4rem 0 2rem;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF4F9 100%);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.8rem;
+}
+
+.page-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.section-contact-body {
+  padding: 3rem 0 6rem;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1.25fr;
   gap: 3rem;
 }
 
@@ -597,7 +652,7 @@ ul {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.85rem 1rem;
+  padding: 0.9rem 1.1rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   background-color: var(--color-bg-alt);
@@ -610,20 +665,20 @@ ul {
 }
 
 .social-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFF;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .social-icon.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 .social-icon.linkedin { background-color: #0A66C2; }
-.social-icon.tiktok { background-color: #000000; }
-.social-icon.whatsapp { background-color: #25D366; }
+.social-icon.youtube { background-color: #FF0000; }
+.social-icon.facebook { background-color: #1877F2; }
 
 .social-text {
   flex-grow: 1;
@@ -632,12 +687,12 @@ ul {
 }
 
 .social-text strong {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--color-text-main);
 }
 
 .social-text span {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--color-text-muted);
 }
 
@@ -650,14 +705,14 @@ ul {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.1rem;
   background-color: var(--color-primary-tint);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
 }
 
 .direct-email-box i {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--color-primary);
 }
 
@@ -671,7 +726,7 @@ ul {
 
 .direct-email-box p {
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-primary-dark);
 }
 
@@ -736,7 +791,7 @@ ul {
 /* Feedback Alertas */
 .form-feedback {
   display: none;
-  padding: 0.8rem 1rem;
+  padding: 0.85rem 1rem;
   border-radius: var(--radius-sm);
   font-size: 0.88rem;
   font-weight: 600;
@@ -768,8 +823,7 @@ ul {
 .footer {
   background-color: var(--color-primary-dark);
   color: #F6ECF5;
-  padding: 3rem 0;
-  border-top: 1px solid var(--color-primary);
+  padding: 3.5rem 0 1.5rem;
 }
 
 .footer-content {
@@ -777,24 +831,71 @@ ul {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.footer-brand .logo-text {
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.footer-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo-text-footer {
+  font-size: 1.4rem;
+  font-weight: 800;
   color: #FFF;
 }
 
-.footer-brand .logo-text span {
+.logo-text-footer span {
   color: #E288CE;
 }
 
 .footer-brand p {
   font-size: 0.88rem;
   color: #D3BCD0;
-  margin-top: 0.3rem;
+  margin-top: 0.4rem;
 }
 
-.footer-copy {
+.footer-social h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #FFF;
+}
+
+.social-icons-footer {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.social-icons-footer a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.social-icons-footer a:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  padding-top: 1.5rem;
   font-size: 0.85rem;
   color: #D3BCD0;
 }
@@ -820,10 +921,7 @@ ul {
     text-align: center;
     gap: 2rem;
   }
-  .founder-role {
-    justify-content: center;
-  }
-  .founder-badges {
+  .founder-role, .founder-badges {
     justify-content: center;
   }
   .contact-grid {
@@ -856,8 +954,14 @@ ul {
   .hero-title {
     font-size: 2.1rem;
   }
+  .page-title {
+    font-size: 2rem;
+  }
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+  .social-icons-footer {
+    justify-content: center;
   }
 }
