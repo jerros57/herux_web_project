@@ -989,56 +989,137 @@ ul {
 }
 
 /* ==========================================================================
-   Variables y ajustes para MODO OSCURO
+   MODO OSCURO COMPLETO (CONTRASTE, TEXTOS CLAROS Y FOOTER PROFUNDO)
    ========================================================================== */
+
+/* Variables para el tema oscuro */
 body[data-theme="dark"] {
-  --color-bg-page: #120b14;
-  --color-bg-alt: #1a101d;
+  --color-bg-page: #100a12;
+  --color-bg-alt: #18101b;
   --color-card-bg: #1f1423;
-  --color-border: #322138;
+  --color-border: #38243c;
   --color-text-main: #f5edf4;
-  --color-text-muted: #c4b5c3;
-  --color-primary-light: #2d1329;
-  --color-primary-tint: #231221;
+  --color-text-muted: #c9b9c9;
+  --color-primary-light: #2e142a;
+  --color-primary-tint: #231121;
 }
 
+/* 1. Navbar en modo oscuro */
 body[data-theme="dark"] .navbar {
-  background-color: rgba(18, 11, 20, 0.92);
+  background-color: rgba(16, 10, 18, 0.94);
   border-bottom-color: var(--color-border);
 }
 
-body[data-theme="dark"] .hero-section {
-  background: linear-gradient(180deg, #120b14 0%, #1a101d 100%);
+body[data-theme="dark"] .nav-link {
+  color: #d1c2d0;
 }
 
-body[data-theme="dark"] .hero-logo-box,
-body[data-theme="dark"] .hero-badge-float,
-body[data-theme="dark"] .split-card,
-body[data-theme="dark"] .founder-card,
-body[data-theme="dark"] .contact-info-card,
-body[data-theme="dark"] .contact-form-card {
-  background-color: var(--color-card-bg);
-}
-
-body[data-theme="dark"] .founder-name,
-body[data-theme="dark"] .hero-title {
-  color: #ffffff;
-}
-
-body[data-theme="dark"] .input-with-icon input,
-body[data-theme="dark"] .input-with-icon textarea {
-  background-color: #170d19;
-  color: #f5edf4;
-  border-color: var(--color-border);
+body[data-theme="dark"] .nav-link:hover {
+  color: #e288ce;
 }
 
 body[data-theme="dark"] .theme-toggle {
-  color: #f39c12;
+  color: #ffbe3b;
+  border-color: var(--color-border);
+  background-color: #241427;
+}
+
+/* 2. Fondos de secciones principales */
+body[data-theme="dark"] .hero-section,
+body[data-theme="dark"] .contact-hero {
+  background: linear-gradient(180deg, #100a12 0%, #18101b 100%);
+}
+
+body[data-theme="dark"] .section-features,
+body[data-theme="dark"] .section-cta {
+  background-color: var(--color-bg-alt);
+}
+
+/* 3. Tarjetas, contenedores y badges */
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .split-card,
+body[data-theme="dark"] .founder-card,
+body[data-theme="dark"] .hero-logo-box,
+body[data-theme="dark"] .hero-badge-float,
+body[data-theme="dark"] .contact-info-card,
+body[data-theme="dark"] .contact-form-card {
+  background-color: var(--color-card-bg);
   border-color: var(--color-border);
 }
 
+/* 4. Forzar que TODOS los títulos y etiquetas sean claros */
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] h4,
+body[data-theme="dark"] .hero-title,
+body[data-theme="dark"] .section-title,
+body[data-theme="dark"] .card-title,
+body[data-theme="dark"] .founder-name,
+body[data-theme="dark"] .page-title,
+body[data-theme="dark"] .split-card-header h3,
+body[data-theme="dark"] .contact-info-card h3,
+body[data-theme="dark"] .contact-form-card h3,
+body[data-theme="dark"] .social-text strong,
+body[data-theme="dark"] .direct-email-box p,
+body[data-theme="dark"] .form-group label,
+body[data-theme="dark"] .badge-list li {
+  color: #f7f0f6 !important;
+}
+
+/* 5. Inputs y campos de formulario en oscuro */
+body[data-theme="dark"] .input-with-icon input,
+body[data-theme="dark"] .input-with-icon textarea {
+  background-color: #160d19;
+  color: #ffffff !important;
+  border-color: var(--color-border);
+}
+
+body[data-theme="dark"] .input-with-icon input::placeholder,
+body[data-theme="dark"] .input-with-icon textarea::placeholder {
+  color: #8c788e;
+}
+
+/* 6. Tarjetas de redes sociales en contacto */
+body[data-theme="dark"] .social-item {
+  background-color: #170d19;
+  border-color: var(--color-border);
+}
+
+body[data-theme="dark"] .social-item:hover {
+  background-color: #2b1428;
+  border-color: var(--color-primary);
+}
+
+/* 7. Footer arreglado (fondo oscuro nítido y textos legibles) */
+body[data-theme="dark"] .footer {
+  background-color: #0b060d !important;
+  border-top: 1px solid #2e142a;
+}
+
+body[data-theme="dark"] .footer-brand p,
+body[data-theme="dark"] .footer-bottom p {
+  color: #c9b9c9 !important;
+}
+
+body[data-theme="dark"] .footer-social h4 {
+  color: #f7f0f6 !important;
+}
+
+body[data-theme="dark"] .social-icons-footer a {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5edf4;
+}
+
+body[data-theme="dark"] .social-icons-footer a:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* 8. Menú desplegable móvil en oscuro */
 @media (max-width: 768px) {
   body[data-theme="dark"] .nav-menu {
-    background: #190f1d;
+    background-color: #18101b;
+    border-bottom-color: var(--color-border);
   }
 }

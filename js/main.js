@@ -124,35 +124,48 @@ function configurarFormularioContacto() {
   });
 }
 
-// Manejo de Modo Oscuro con persistencia en LocalStorage
+// Manejo de Modo Oscuro con cambio global de logos y textos
 function iniciarModoOscuro() {
   const themeToggle = document.getElementById('theme-toggle');
   if (!themeToggle) return;
 
   const icon = themeToggle.querySelector('i');
+
+  const actualizarLogos = (esOscuro) => {
+    // Si es oscuro usamos el logo blanco, si es claro el púrpura
+    const rutaLogo = esOscuro ? 'img/logo-herux-white.png' : 'img/logo-herux.png';
+    
+    // Seleccionar todos los elementos de logo presentes en la web
+    const logos = document.querySelectorAll('.logo-img, .hero-logo-img, .footer-logo-img');
+    logos.forEach(img => {
+      img.src = rutaLogo;
+    });
+  };
+
+  const aplicarTema = (tema) => {
+    if (tema === 'dark') {
+      document.body.setAttribute('data-theme', 'dark');
+      if (icon) icon.className = 'fa-solid fa-sun';
+      actualizarLogos(true);
+    } else {
+      document.body.removeAttribute('data-theme');
+      if (icon) icon.className = 'fa-solid fa-moon';
+      actualizarLogos(false);
+    }
+  };
+
+  // Cargar preferencia inicial
   const savedTheme = localStorage.getItem('herux-theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const temaInicial = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+  
+  aplicarTema(temaInicial);
 
-  // Comprobar preferencia guardada o del sistema operativo
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.body.setAttribute('data-theme', 'dark');
-    if (icon) icon.className = 'fa-solid fa-sun';
-  } else {
-    document.body.removeAttribute('data-theme');
-    if (icon) icon.className = 'fa-solid fa-moon';
-  }
-
+  // Alternar tema al hacer click
   themeToggle.addEventListener('click', () => {
-    const isDark = document.body.getAttribute('data-theme') === 'dark';
-
-    if (isDark) {
-      document.body.removeAttribute('data-theme');
-      localStorage.setItem('herux-theme', 'light');
-      if (icon) icon.className = 'fa-solid fa-moon';
-    } else {
-      document.body.setAttribute('data-theme', 'dark');
-      localStorage.setItem('herux-theme', 'dark');
-      if (icon) icon.className = 'fa-solid fa-sun';
-    }
+    const esOscuro = document.body.getAttribute('data-theme') === 'dark';
+    const nuevoTema = esOscuro ? 'light' : 'dark';
+    localStorage.setItem('herux-theme', nuevoTema);
+    aplicarTema(nuevoTema);
   });
 }
