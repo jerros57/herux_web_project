@@ -1,22 +1,19 @@
 /**
  * herUX - Lógica JavaScript Modular
- * - Menú Móvil
- * - Validación de Formato de Correo
- * - Feedback Visual
- * - Manejo Asíncrono de FormSubmit (Requisito estricto)
+ * - Menú Móvil responsivo (con control de eventos táctiles/click)
+ * - Modo Oscuro con cambio dinámico de logos y persistencia en LocalStorage
+ * - Envío Asíncrono de FormSubmit con validaciones y feedback reactivo
  */
+
 document.addEventListener('DOMContentLoaded', () => {
   iniciarNavegacionMovil();
-  configurarFormularioContacto();
   iniciarModoOscuro();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  iniciarNavegacionMovil();
   configurarFormularioContacto();
 });
 
-// Menú Móvil responsivo
+/* ==========================================================================
+   1. NAVEGACIÓN MÓVIL (MENÚ HAMBURGUESA)
+   ========================================================================== */
 function iniciarNavegacionMovil() {
   const toggleBtn = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -24,27 +21,85 @@ function iniciarNavegacionMovil() {
 
   if (!toggleBtn || !navMenu) return;
 
-  toggleBtn.addEventListener('click', () => {
-    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-    toggleBtn.setAttribute('aria-expanded', !isExpanded);
-    navMenu.classList.toggle('active');
+  // Alternar apertura/cierre del menú
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isActive = navMenu.classList.toggle('active');
+    toggleBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
   });
 
+  // Cerrar el menú al pulsar cualquier enlace
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
       toggleBtn.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Cerrar el menú si se hace click fuera de él
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navMenu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
 }
 
-// Función auxiliar para validar correo
+/* ==========================================================================
+   2. MODO OSCURO (DARK MODE) + CAMBIO DE LOGOS
+   ========================================================================== */
+function iniciarModoOscuro() {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+
+  const icon = themeToggle.querySelector('i');
+
+  // Función para alternar el archivo de imagen de todos los logos
+  const actualizarLogos = (esOscuro) => {
+    const rutaLogo = esOscuro ? 'img/logo-herux-white.png' : 'img/logo-herux.png';
+    const logos = document.querySelectorAll('.logo-img, .hero-logo-img, .footer-logo-img');
+    logos.forEach(img => {
+      img.src = rutaLogo;
+    });
+  };
+
+  // Aplicar tema en el elemento body
+  const aplicarTema = (tema) => {
+    if (tema === 'dark') {
+      document.body.setAttribute('data-theme', 'dark');
+      if (icon) icon.className = 'fa-solid fa-sun';
+      actualizarLogos(true);
+    } else {
+      document.body.removeAttribute('data-theme');
+      if (icon) icon.className = 'fa-solid fa-moon';
+      actualizarLogos(false);
+    }
+  };
+
+  // Leer preferencia guardada o preferencia del navegador
+  const savedTheme = localStorage.getItem('herux-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const temaInicial = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+
+  aplicarTema(temaInicial);
+
+  // Evento click para alternar entre claro y oscuro
+  themeToggle.addEventListener('click', () => {
+    const esOscuro = document.body.getAttribute('data-theme') === 'dark';
+    const nuevoTema = esOscuro ? 'light' : 'dark';
+    localStorage.setItem('herux-theme', nuevoTema);
+    aplicarTema(nuevoTema);
+  });
+}
+
+/* ==========================================================================
+   3. FORMULARIO ASÍNCRONO (FORMSUBMIT)
+   ========================================================================== */
 function validarFormatoCorreo(correo) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(correo);
 }
 
-// Función auxiliar para mostrar retroalimentación accesible en UI
 function mostrarFeedback(mensaje, tipo) {
   const feedbackBox = document.getElementById('form-feedback');
   if (!feedbackBox) return;
@@ -52,7 +107,6 @@ function mostrarFeedback(mensaje, tipo) {
   feedbackBox.className = `form-feedback ${tipo}`;
 }
 
-// Requisito: Eventos submit/input y consumo asíncrono con FormSubmit
 function configurarFormularioContacto() {
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('btn-submit');
@@ -78,7 +132,7 @@ function configurarFormularioContacto() {
       return;
     }
 
-    submitBtn.disabled = true;
+    if (submitBtn) submitBtn.disabled = true;
     mostrarFeedback('Enviando mensaje...', 'info');
 
     try {
@@ -93,7 +147,7 @@ function configurarFormularioContacto() {
           name: nombre,
           email: correo,
           message: mensaje,
-          _subject: `Nuevo mensaje de ${nombre} desde herUX Comunidad`
+          _subject: `Nuevo mensaje de ${nombre} desde la web herUX`
         })
       });
 
@@ -110,62 +164,16 @@ function configurarFormularioContacto() {
       mostrarFeedback('Error de conexión al enviar el formulario.', 'error');
       alert('❌ Error de conexión al procesar el envío.');
     } finally {
-      submitBtn.disabled = false;
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
 
-  // Limpieza reactiva del contenedor de alertas
+  // Limpieza reactiva del contenedor de alertas al escribir
   contactForm.addEventListener('input', () => {
     const feedbackBox = document.getElementById('form-feedback');
     if (feedbackBox && feedbackBox.textContent !== '') {
       feedbackBox.textContent = '';
       feedbackBox.className = 'form-feedback';
     }
-  });
-}
-
-// Manejo de Modo Oscuro con cambio global de logos y textos
-function iniciarModoOscuro() {
-  const themeToggle = document.getElementById('theme-toggle');
-  if (!themeToggle) return;
-
-  const icon = themeToggle.querySelector('i');
-
-  const actualizarLogos = (esOscuro) => {
-    // Si es oscuro usamos el logo blanco, si es claro el púrpura
-    const rutaLogo = esOscuro ? 'img/logo-herux-white.png' : 'img/logo-herux.png';
-    
-    // Seleccionar todos los elementos de logo presentes en la web
-    const logos = document.querySelectorAll('.logo-img, .hero-logo-img, .footer-logo-img');
-    logos.forEach(img => {
-      img.src = rutaLogo;
-    });
-  };
-
-  const aplicarTema = (tema) => {
-    if (tema === 'dark') {
-      document.body.setAttribute('data-theme', 'dark');
-      if (icon) icon.className = 'fa-solid fa-sun';
-      actualizarLogos(true);
-    } else {
-      document.body.removeAttribute('data-theme');
-      if (icon) icon.className = 'fa-solid fa-moon';
-      actualizarLogos(false);
-    }
-  };
-
-  // Cargar preferencia inicial
-  const savedTheme = localStorage.getItem('herux-theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const temaInicial = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
-  
-  aplicarTema(temaInicial);
-
-  // Alternar tema al hacer click
-  themeToggle.addEventListener('click', () => {
-    const esOscuro = document.body.getAttribute('data-theme') === 'dark';
-    const nuevoTema = esOscuro ? 'light' : 'dark';
-    localStorage.setItem('herux-theme', nuevoTema);
-    aplicarTema(nuevoTema);
   });
 }
