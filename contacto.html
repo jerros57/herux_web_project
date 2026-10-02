@@ -6,6 +6,10 @@
   <title>Contacto & Redes Sociales - herUX</title>
   <meta name="description" content="Ponte en contacto con la comunidad herUX o síguenos en nuestras redes sociales oficiales." />
 
+  <!-- Favicon Transparente -->
+  <link rel="icon" type="image/png" href="img/herux-icon.png" />
+  <link rel="apple-touch-icon" href="img/herux-icon.png" />
+
   <!-- Tipografía: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +18,7 @@
   <!-- Iconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Mismo archivo CSS compartido -->
+  <!-- Estilos compartidos -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -26,16 +30,20 @@
         <img src="img/logo-herux.png" alt="Logo herUX" class="logo-img" />
         <span class="logo-text">her<span>UX</span></span>
       </a>
-      
-<button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
-  <i class="fa-solid fa-moon"></i>
-</button>
-      
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Selector Modo Oscuro -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Botón Menú Móvil -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
       <nav class="nav-menu" id="nav-menu">
         <ul class="nav-list">
@@ -61,18 +69,17 @@
       </div>
     </section>
 
-    <!-- SECCIÓN PRINCIPAL: REDES Y FORMULARIO -->
+    <!-- REDES Y FORMULARIO -->
     <section class="section section-contact-body">
       <div class="container">
         <div class="contact-grid">
           
-          <!-- COLUMNA IZQUIERDA: ENLACES DIRECTOS A RRSS -->
+          <!-- COLUMNA IZQUIERDA: RRSS -->
           <div class="contact-info-card">
             <h3>Nuestras Redes Oficiales</h3>
             <p>Sigue nuestras actividades, transmisiones y novedades en cada una de nuestras plataformas:</p>
 
             <div class="social-links-list">
-              <!-- Instagram -->
               <a href="https://instagram.com/her.uxec" target="_blank" rel="noopener noreferrer" class="social-item">
                 <div class="social-icon instagram"><i class="fa-brands fa-instagram"></i></div>
                 <div class="social-text">
@@ -82,7 +89,6 @@
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
               </a>
 
-              <!-- LinkedIn -->
               <a href="https://www.linkedin.com/company/her-ux/mycompany/" target="_blank" rel="noopener noreferrer" class="social-item">
                 <div class="social-icon linkedin"><i class="fa-brands fa-linkedin-in"></i></div>
                 <div class="social-text">
@@ -92,7 +98,6 @@
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
               </a>
 
-              <!-- YouTube -->
               <a href="https://www.youtube.com/channel/UCL-WU2sxF2A1HmQ7NM1l0gA" target="_blank" rel="noopener noreferrer" class="social-item">
                 <div class="social-icon youtube"><i class="fa-brands fa-youtube"></i></div>
                 <div class="social-text">
@@ -102,7 +107,6 @@
                 <i class="fa-solid fa-arrow-up-right-from-square arrow-link"></i>
               </a>
 
-              <!-- Facebook -->
               <a href="https://www.facebook.com/her.uxec" target="_blank" rel="noopener noreferrer" class="social-item">
                 <div class="social-icon facebook"><i class="fa-brands fa-facebook-f"></i></div>
                 <div class="social-text">
@@ -117,7 +121,7 @@
               <i class="fa-regular fa-envelope"></i>
               <div>
                 <small>Correo de la comunidad</small>
-                <p>herux.ecuador@gmail.com</p>
+                <p>info@heruxec.com</p>
               </div>
             </div>
           </div>
@@ -127,7 +131,6 @@
             <h3>Envíanos un Mensaje</h3>
             <p>Escríbenos directamente y te responderemos a la brevedad.</p>
 
-            <!-- Contenedor reactivo de feedback -->
             <div id="form-feedback" class="form-feedback" role="alert"></div>
 
             <form id="contact-form" novalidate>
@@ -167,7 +170,7 @@
     </section>
   </main>
 
-  <!-- Footer con Redes Sociales Oficiales -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">
       <div class="footer-brand">
@@ -197,7 +200,7 @@
       </div>
     </div>
     <div class="footer-bottom text-center">
-      <p>&copy; 2026 Comunity herUX. By Olga Tohabanda Duchi.</p>
+      <p>&copy; 2026 Comunidad herUX. By Olga Tohabanda Duchi.</p>
     </div>
   </footer>
 
