@@ -6,19 +6,14 @@
   <title>Contacto & Redes Sociales - herUX</title>
   <meta name="description" content="Ponte en contacto con la comunidad herUX o síguenos en nuestras redes sociales oficiales." />
 
-  <!-- Favicon Transparente -->
   <link rel="icon" type="image/png" href="img/herux-icon.png" />
   <link rel="apple-touch-icon" href="img/herux-icon.png" />
 
-  <!-- Tipografía: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Iconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Estilos compartidos -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -31,13 +26,11 @@
         <span class="logo-text">her<span>UX</span></span>
       </a>
 
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <!-- Selector Modo Oscuro -->
+      <div class="nav-controls">
         <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
           <i class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Botón Menú Móvil -->
         <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
           <span></span>
           <span></span>
@@ -58,7 +51,6 @@
   </header>
 
   <main>
-    <!-- CABECERA DE CONTACTO -->
     <section class="contact-hero">
       <div class="container text-center">
         <span class="badge-pill">Hablemos</span>
@@ -69,12 +61,11 @@
       </div>
     </section>
 
-    <!-- REDES Y FORMULARIO -->
     <section class="section section-contact-body">
       <div class="container">
         <div class="contact-grid">
           
-          <!-- COLUMNA IZQUIERDA: RRSS -->
+          <!-- COLUMNA IZQUIERDA: RRSS Y CORREO -->
           <div class="contact-info-card">
             <h3>Nuestras Redes Oficiales</h3>
             <p>Sigue nuestras actividades, transmisiones y novedades en cada una de nuestras plataformas:</p>
@@ -120,8 +111,8 @@
             <div class="direct-email-box">
               <i class="fa-regular fa-envelope"></i>
               <div>
-                <small>Correo de la comunidad</small>
-                <p>info@heruxec.com</p>
+                <small>Correo de información</small>
+                <p><a href="mailto:info@heruxec.com" style="color: inherit;">info@heruxec.com</a></p>
               </div>
             </div>
           </div>

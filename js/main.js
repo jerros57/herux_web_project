@@ -137,7 +137,7 @@ function configurarFormularioContacto() {
 
     try {
       // Petición asíncrona a FormSubmit
-      const response = await fetch('https://formsubmit.co/ajax/dependecia37@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/info@heruxec.com', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
